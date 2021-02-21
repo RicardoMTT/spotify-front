@@ -1,0 +1,27 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 animated fadeIn">
+  <ng-container *ngIf="this.items.length > 0; else isEmpty">
+    <div class="col" *ngFor="let item of this.items">
+      <div class="card">
+        <img [src]="item.images | noimage" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text" *ngIf="showArtists">
+            <span *ngFor="let artista of item.artists" class="badge bg-primary">
+              {{ item.name }}
+            </span>
+          </p>
+          <button
+            class="btn btn-success"
+            (click)="seeDetails(item.id)"
+            *ngIf="showButton"
+          >
+            Ver detalle
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #isEmpty>
+    <h1></h1>
+  </ng-template>
+</div>
